@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
-namespace LabWork
+namespace RegularExpressionsLab
 {
-    // Даний проект є шаблоном для виконання лабораторних робіт
-    // з курсу "Об'єктно-орієнтоване програмування та патерни проектування"
-    // Необхідно змінювати і дописувати код лише в цьому проекті
-    // Відео-інструкції щодо роботи з github можна переглянути 
-    // за посиланням https://www.youtube.com/@ViktorZhukovskyy/videos 
     class Program
     {
         static void Main(string[] args)
         {
             
-            Console.WriteLine("Hello World!");
+            string text = "Серед автомобілів були номерні знаки: AB1234AO, AC5678AA, AA0000AO, BB1111BB, AA9999AO, AA1023AO, AA1041AO.";
+
+            
+            string pattern = @"AA\d{4}AO";
+
+            
+            MatchCollection matches = Regex.Matches(text, pattern);
+
+            Console.WriteLine("Знайдені номерні знаки Рівненської області:");
+
+            foreach (Match match in matches)
+            {
+                Console.WriteLine(match.Value);
+            }
         }
     }
 }
